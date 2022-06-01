@@ -18,7 +18,7 @@ Layer 1 and Layer 2 are terms used to describe 'types' of blockchains. Layer 1 b
 
 For example, Ethereum and Bitcoin are Layer 1 blockchains, whereas Polygon, Arbitrum, Optimism, Lightning Network, etc. are examples of Layer 2 blockchains.
 
-Layer 1 blockchains change the rules of the protocol directly in an attempt to scale or provide better usability. They can include, for example, increasing the amount of data included in each block, or accelerating the block confirmation time for each block, to increase overall throughput. Often, this comes with the cost of reduces security and/or decentralization by increasing hardware requirements of running nodes, or increasing the cost to become a validator in Proof-of-Stake systems, etc.
+Layer 1 blockchains change the rules of the protocol directly in an attempt to scale or provide better usability. They can include, for example, increasing the amount of data included in each block, or accelerating the block confirmation time for each block, to increase overall throughput. Often, this comes with the cost of reduced security and/or decentralization by increasing hardware requirements of running nodes, or increasing the cost to become a validator in Proof-of-Stake systems, etc.
 
 Example of Layer 1 blockchains include Ethereum, NEAR, Flow, Avalanche, Solana, Algorand, Bitcoin, etc.
 
