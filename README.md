@@ -42,12 +42,16 @@ The word **shard** means **a small part of a whole**. In the context of blockcha
 
 This allows for parallel computation of transactions on different shards. This allows for faster processing of transactions, and hence higher scalability.
 
+<Quiz questionId="a30a266d-08ce-47c4-9c4f-faab1ae6a051" />
+
 ---
 
 #### How are shards managed?
 A common approach to managing all the individual shards is having a Beacon chain which acts as the 'manager' of all the shards. It is responsible for randomly assigning validators to specific shards, receiving updates from each of the shards individually and taking global snapshots of them, and processing stakes and slashing in the Proof of Stake consensus.
 
 The bottleneck for scalability now becomes the Beacon chain, as that is responsible for the overall global state. However, if each of the nodes in the network becomes 4x faster, including nodes on the Beacon chain, each shard will be able to process 4x more transactions, and also the Beacon chain will be able to manage 4x more shards. Therefore, overall it would lead to an increase of 16x in total transaction processing. This is called **quadratic sharding**.
+
+<Quiz questionId="5b4aec43-3ab2-416c-90c5-0c28a379b5bb" />
 
 #### What if there is a fork?
 While shard chains + Beacon chain model is powerful, it has complexities when we talk about what happens if the chain forks. Decision for which chain becomes the 'true' chain needs to be made on each shard individually, and the logic for the beacon chain and shard chains is different.
@@ -70,6 +74,8 @@ In NEAR, if a transaction affects more than 1 shard, it is consecutively execute
 
 Each subsequent shard can verify the receipt transaction and get confirmation that the preceding shards have done their work. It then executes whatever needs to happen on that shard, and either ends the transaction or passes it further if more shards are being affected.
 
+<Quiz questionId="9949dea3-7894-4f7b-994f-3257adf54ccf" />
+
 ---
 
 #### Developing on NEAR
@@ -91,6 +97,7 @@ It is important to note than NEAR also runs an Ethereum Layer 2 blockchain calle
 - Gas (txn fees) on NEAR is controlled algorithmically to try and avoid greater than 50% congestion on individual shards, instead of being based on an auction model like Ethereum.
 - NEAR has significantly less validators/miners than Ethereum. This is due to the high requirements to become a validator. As of writing, it costs over 1 million dollars to purchase enough $NEAR and stake them to become a validator on their network.
 
+<Quiz questionId="956f3814-f4dd-4d92-9999-21b1bb1d5961" />
 
 ## Flow Blockchain
 ![](https://i.imgur.com/rohORkF.png)
@@ -122,6 +129,8 @@ Looking at the above figure, we can see that older blocks are further along the 
 
 Unlike sharding, which takes a horizontal approach to scaling, Flow scales vertically. This means that even though each validator node takes part in validating each transaction, they do so only at the stages of validation. They can therefore specialize for particular tasks at a particular stage of focus. This allows Flow to scale thousands of times more than current traditional blockchains.
 
+<Quiz questionId="ab054c06-9d17-4d65-8bbd-a80a1ba095ff" />
+
 #### Resource-Oriented Programming
 Smart Contracts on Flow are developed in a programming language called **Cadence**. Cadence is defined as "the first ergonomic, resource oriented smart contract programming language". 
 
@@ -149,10 +158,13 @@ Flow has focused on making things easy to use for the mainstream. When interacti
 
 #### Comparison to Ethereum
 - Flow uses Proof of Stake consensus
-- Flow is a much newer ecosystem, and has a significantly smaller community and audience, but they have a great documentation and developer tools to get started
+- Flow is a much newer ecosystem, and has a smaller community and audience, but they have a great documentation and developer tools to get started
 - Flow was explicitly designed to support games and consumer applications that require high scalability to operate. This is no surprise because Flow is built by Dapper Labs - the team famous for developing CryptoKitties (one of the first NFT projects) which clogged the Ethereum blockchain, and also for developing NBA TopShot - the most popular NFT project which is officially partnered with the NBA. NBA TopShot is built on Flow.
 - Execution nodes on Flow have very high staking and hardware requirements. Unlike Ethereum, Flow execution nodes are likely to be a cluster of high-end server hardware in data centers.
 - Most of the applications that currently exist on Flow are made by the team behind it directly. Though more apps are currently being developed and the team is aggressively trying to onboard more external developers on the ecosystem.
+
+<Quiz questionId="5d596551-eab5-4db4-b076-ac9f707c4728" />
+<Quiz questionId="0794fe89-14b8-45dc-86f0-0642438121e3" />
 
 ## Avalanche
 ![](https://i.imgur.com/agzms5v.png)
@@ -165,6 +177,8 @@ Avalanche is an ecosystem, not a single blockchain. There are multiple chains th
 
 **Subnetworks**
 A subnetwork (or subnet), is a set of validators who are working to achieve consensus on a set of blockchains. Each blockchain on Avalanche is validated by one subnet, but each subnet can validate multiple blockchains. A given validator can be part of multiple subnets. If a validator does not care about a particular subnet, they do not need to join it. Also, since subnets can control who enters them, private subnets can be created which are similar to private or permissioned blockchains. 
+
+<Quiz questionId="5a32352d-c116-4c2c-aaea-841780ded8f4" />
 
 **Virtual Machine**
 Each blockchain on Avalanche must be a virtual machine. When a new chain is created, it must specify the VM it wants to use - either something that already exists, or a new implementation by the developers. This is how the C-Chain can support the Ethereum Virtual Machine and support Solidity, while other chains on Avalanche do not.
@@ -204,6 +218,8 @@ Most of the other optimizations are just that, optimizations to smaller aspects 
 #### Leader Selection
 Solana has deterministic leader selection. This means that when a transaction is created, the network already knows who the next block creator is going to be, and can just forward the transaction data to that leader directly. Unlike Bitcoin and Ethereum, there is no 'race' or 'puzzle' to solve in competition against other miners. This has it's downsides too, as determinsitic leader selection implies that since leaders are known ahead of time they can be subject to DDoS attacks. 
 
+<Quiz questionId="b665a8e7-ed53-4e80-aa3a-6652de11e87e" />
+
 #### The Compromise
 Solana is really fast. Period. But what does it compromise on to achieve this speed? Apart from the downsides of deterministic leader selection, the remaining tradeoffs land up on dApp developers.
 
@@ -218,6 +234,8 @@ There is separation between code and data on Solana, and has a wide variety of i
 
 Accounts are data stores, and accounts can be created for a pre-defined fixed size of data. To store data, rent needs to be paid for the account. Accounts can store $SOL tokens, which gets deducted over time as rent for the storage space it is using on the network. 
 
+<Quiz questionId="1d299f7b-56b6-4938-848a-562a2757831b" />
+
 #### Transactions on Solana
 On Solana, the basic unit of operations is called an **instruction**. An instruction is a single call into a program (or smart contract). One or more instructions can be bundled together serially into a **message**. A message is signed by a sender to form a **transaction**.
 
@@ -227,9 +245,17 @@ When passing multiple instructions in a transaction, the order matters, as that 
 
 --- 
 
-Overall, Solana has it's own set of pros and cons. It's very fast, and definitely has made some great technical advancements. The cons are the developer experience is impacted, and is much harder to develop dApps on Solana that it is on Ethereum (or any EVM compatible chain). 
+<Quiz questionId="a66cd41d-4096-489c-9408-c5bf2d6f8d87" />
+
+Overall, Solana has it's own set of pros and cons. It's very fast, and definitely has made some good technical advancements. The cons are the developer experience is impacted, and is much harder to develop dApps on Solana that it is on Ethereum (or any EVM compatible chain). 
+
+<Quiz questionId="6a43d499-8067-4630-9240-8ba372163a71" />
 
 ## Conclusion
 I hope through this article you were able to get some insight into different Layer 1's and different approaches they are taking to scale. This document should also serve as proof for how we are still quite early in the market, and likely not all of these chains will continue to gain popularity and be widely used over time as clear winners emerge. 
 
+<Quiz questionId="fda134ae-db06-42dc-8dc6-d14d04da9d4f" />
+
 As always, feel free to post any questions on the Discord. All the best for the skill test!
+
+<SubmitQuiz />
