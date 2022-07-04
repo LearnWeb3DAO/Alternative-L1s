@@ -134,7 +134,7 @@ Unlike sharding, which takes a horizontal approach to scaling, Flow scales verti
 #### Resource-Oriented Programming
 Smart Contracts on Flow are developed in a programming language called **Cadence**. Cadence is defined as "the first ergonomic, resource oriented smart contract programming language". 
 
-Resource oriented programming is a new paradigm of language design, designed to be secure and easy to use. Cadence is the first high-level resource-oriented programming language. It is statically typed, like Solidity, and provides a very strong guarauntee of data storage and data ownership.
+Resource oriented programming is a new paradigm of language design, designed to be secure and easy to use. Cadence is the first high-level resource-oriented programming language. It is statically typed, like Solidity, and provides a very strong guarantee of data storage and data ownership.
 
 Ownership of 'resources', like digital assets, is enabled directly by the programming language, instead of having to manually manage the lifetime of data. 
 
