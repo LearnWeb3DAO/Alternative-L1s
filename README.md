@@ -11,7 +11,7 @@
 - Solana
 
 ## Introduction
-So far we have looked at Ethereum, did some reading on Layer 2 solutions, and used Polygon Network for most of the Junior Track. However, there exist multiple other Layer 1 blockchains as well that are worth looking into. In this article, we will talk a little bit about a few different Layer 1 blockchains.
+So far we have looked at Ethereum, did some reading on Layer 2 solutions, and used Polygon Network for most of the Junior Track. However, there exist multiple other Layer 1 blockchains as well that are worth looking into. In this article, we will talk a bit about a few different Layer 1 blockchains.
 
 ## Layer 1 vs Layer 2
 Layer 1 and Layer 2 are terms used to describe 'types' of blockchains. Layer 1 blockchains are those which are the main blockchain themselves, whereas Layer 2 blockchains are those which are overlaying networks on top of a Layer 1 blockchain.
@@ -22,7 +22,7 @@ Layer 1 blockchains change the rules of the protocol directly in an attempt to s
 
 Example of Layer 1 blockchains include Ethereum, NEAR, Flow, Avalanche, Solana, Algorand, Bitcoin, etc.
 
-Layer 2 blockchains refer to networks that operate on top of an underlying Layer 1 blockchain, in an attempt to improve scalability and efficiency while deriving security and decentralization benefits from the main chain. This entails shifting some of the work of the Layer 1 blockchain to a Layer 2 network, and only using Layer 1 transactions for settlement - e.g. executing 1000 transactions on the layer 2 network, compiling their results together, and posting a proof of validity on the layer 1 blockchain in a single transaction.
+Layer 2 blockchains refer to networks that operate on top of an underlying Layer 1 blockchain, in an attempt to improve scalability and efficiency while deriving security and decentralization benefits from the main chain. This entails shifting some work of the Layer 1 blockchain to a Layer 2 network, and only using Layer 1 transactions for settlement - e.g. executing 1000 transactions on the layer 2 network, compiling their results together, and posting a proof of validity on the layer 1 blockchain in a single transaction.
 
 Examples of Layer 2 blockchains include Polygon*, Optimism, Arbitrum, zkSync, Lightning Network, etc.
 
@@ -49,14 +49,14 @@ This allows for parallel computation of transactions on different shards. This a
 #### How are shards managed?
 A common approach to managing all the individual shards is having a Beacon chain which acts as the 'manager' of all the shards. It is responsible for randomly assigning validators to specific shards, receiving updates from each of the shards individually and taking global snapshots of them, and processing stakes and slashing in the Proof of Stake consensus.
 
-The bottleneck for scalability now becomes the Beacon chain, as that is responsible for the overall global state. However, if each of the nodes in the network becomes 4x faster, including nodes on the Beacon chain, each shard will be able to process 4x more transactions, and also the Beacon chain will be able to manage 4x more shards. Therefore, overall it would lead to an increase of 16x in total transaction processing. This is called **quadratic sharding**.
+The bottleneck for scalability now becomes the Beacon chain, as that is responsible for the overall global state. However, if each of the nodes in the network becomes 4x faster, including nodes on the Beacon chain, each shard will be able to process 4x more transactions, and also the Beacon chain will be able to manage 4x more shards. Therefore, overall, it would lead to an increase of 16x in total transaction processing. This is called **quadratic sharding**.
 
 <Quiz questionId="5b4aec43-3ab2-416c-90c5-0c28a379b5bb" />
 
 #### What if there is a fork?
-While shard chains + Beacon chain model is powerful, it has complexities when we talk about what happens if the chain forks. Decision for which chain becomes the 'true' chain needs to be made on each shard individually, and the logic for the beacon chain and shard chains is different.
+While shard chains + Beacon chain model is powerful, it has complexities when we talk about what happens if the chain forks. The Decision for which chain becomes the 'true' chain needs to be made on each shard individually, and the logic for the beacon chain and shard chains is different.
 
-Due to this, NEAR follows a slightly improved model. In NEAR, the system is modeled logically as a single blockchain, where each block contains all the transactions for all of the blocks, and changes the state of all shards simultaneously. So if a fork happens, the entire chain effectively ends up choosing a single, logical longest chain. However, physically, no single participant needs to download the full state of the block, and only downloads the state relevant to their shard(s).
+Due to this, NEAR follows a slightly improved model. In NEAR, the system is modeled logically as a single blockchain, where each block contains all the transactions for all the blocks, and changes the state of all shards simultaneously. So if a fork happens, the entire chain effectively ends up choosing a single, logical longest chain. However, physically, no single participant needs to download the full state of the block, and only downloads the state relevant to their shard(s).
 
 #### How do transactions which interact with multiple shards work?
 Sharding is quite useless if individual shards cannot communicate with each other, they are not any better than multiple independent blockchains communicating with each other.
@@ -84,13 +84,13 @@ Smart contracts for the NEAR Layer 1 blockchain can be written either in **Rust*
 ![](https://i.imgur.com/iLf0kGq.png)
 
 
-It is important to note than NEAR also runs an Ethereum Layer 2 blockchain called **Aurora** which uses the native ETH token as the native gas token for the layer 2 as well. 
+It is important to note that NEAR also runs an Ethereum Layer 2 blockchain called **Aurora** which uses the native ETH token as the native gas token for the layer 2 as well. 
 
 #### Comparison to Ethereum
 
 - For developers, the primary difference is the language used to develop. While you can use Solidity for the Aurora Layer 2 network, the NEAR Protocol is more than just Aurora and doesn't support Solidity for deploying on the native NEAR blockchain. 
 - The native token is $NEAR, instead of $ETH, for the Layer 1 blockchain.
-- Accounts on NEAR have human readable names, instead of random letters and numbers like on Ethereum. e.g. `learnweb3.near` is a valid NEAR account.
+- Accounts on NEAR have human-readable names, instead of random letters and numbers like on Ethereum. e.g. `learnweb3.near` is a valid NEAR account.
 - NEAR allows developers to upgrade their smart contracts. However, they also provide a way to permanently remove this option for a specific contract for enhanced security and truly trustless operation of smart contracts.
 - Instead of Etherscan, developers use the **NEAR Explorer** to look at blocks and transactions.
 - Instead of running local test nodes through Hardhat or Ganache, developers can use the `nearup` command-line tool to run a local test node.
@@ -102,13 +102,13 @@ It is important to note than NEAR also runs an Ethereum Layer 2 blockchain calle
 ## Flow Blockchain
 ![](https://i.imgur.com/rohORkF.png)
 
-Flow describes themselves as a "fast, decentralized, and developer-friendly blockchain". They are based on a multi-role architecture, and designed to scale **without** sharding.
+Flow describes themselves as a "fast, decentralized, and developer-friendly blockchain". They are based on a multirole architecture, and designed to scale **without** sharding.
 
 Flow is based on four foundations that make it unique and worth discussing:
 - Multi-role architecture
 - Resource-oriented programming
 - Upgradeable smart contracts
-- Easy onramps from fiat to crypto
+- Easy on-ramps from fiat to crypto
 
 Let's look at these individually and understand them.
 
@@ -140,7 +140,7 @@ Ownership of 'resources', like digital assets, is enabled directly by the progra
 
 Labelling something as a resource tells the programming language that this data represents something of value, and that all code that interacts with that data needs to follow special rules to maintain the value of the data.
 
-1. Each resource can only exist in one place at any given time. Resources cannot be duplicated or accidentaly deleted, through programming errors or through malicious code.
+1. Each resource can only exist in one place at any given time. Resources cannot be duplicated or accidentally deleted, through programming errors or through malicious code.
 2. Ownership of a resource is defined by where it is stored in the code.
 3. Access to methods on a resource is limited only to the owner. For example, only the owner of an NFT can initiate a function that modifies that NFT. This is built into the language directly by placing that NFT's data into the owner's storage, instead of having to create `onlyOwner` modifiers or similar workarounds.
 
@@ -154,7 +154,7 @@ Unfortunately, it is very hard to get software to be error-free the first time. 
 On Flow, developers can choose to deploy smart contracts to the mainnet in a "beta state". While in this state, code can be incrementally updated by the original authors. Users are warned about the contract being in the beta state when interacting with it, and can choose to wait until the code is finalized. Once the authors are confident that their code is safe, they can release control of the contract and it forever becomes non-upgradeable after that.
 
 #### Consumer Friendly Onboarding
-Flow has focused on making things easy to use for the mainstream. When interacting with a dApp on Flow, the Flow transaction format makes strong guarauntees about what kinds of changes a transaction can and cannot make, therefore wallets can provide human-readable information to users to help them make informed decisions about what they are approving.
+Flow has focused on making things easy to use for the mainstream. When interacting with a dApp on Flow, the Flow transaction format makes strong guarantees about what kinds of changes a transaction can and cannot make, therefore wallets can provide human-readable information to users to help them make informed decisions about what they are approving.
 
 #### Comparison to Ethereum
 - Flow uses Proof of Stake consensus
@@ -169,7 +169,7 @@ Flow has focused on making things easy to use for the mainstream. When interacti
 ## Avalanche
 ![](https://i.imgur.com/agzms5v.png)
 
-Avalanche is an open source platform for building dApps and enterprise platforms in an interoperable ecosystem of blockchains. It is a smart contracts platform, which offers high throughput and near-instant transaction finality. Also, Avalanche supports Solidity so smart contracts from Ethereum can easily be ported over to Avalanche.
+Avalanche is an open source platform for building dApps and enterprise platforms in an interoperable ecosystem of blockchains. It is a smart contracts platform, which offers high throughput and near-instant transaction finality. Also, Avalanche supports Solidity, so smart contracts from Ethereum can easily be ported over to Avalanche.
 
 Avalanche is an ecosystem, not a single blockchain. There are multiple chains that can exist on top of the Avalanche ecosystem. The most popular one is the Avalanche C-Chain, which is an EVM compatible chain and supports Solidity smart contracts. However, entirely new blockchain systems can be built in the Avalanche ecosystem with varying properties.
 
@@ -191,32 +191,32 @@ AVAX Token has a fixed hard cap, so there can never be more than 720,000,000 AVA
 #### Developing on Avalanche
 Short of creating your own subnet, the main chain that Avalanche is used for is the C-Chain. Deploying to the C-Chain is very similar to deploying to an Ethereum Layer 2. You just need to get an RPC URL for an Avalanche node, and you can deploy your Solidity smart contracts to the C-Chain using tools you are already familiar with - Hardhat, Truffle, Remix, etc. You can also use Metamask as an Avalanche C-Chain wallet.
 
-#### Comparision to Ethereum
+#### Comparison to Ethereum
 - Avalanche has faster transaction finality and is cheaper to use
 - Development on the C-Chain and Ethereum are pretty much the exact same
 - The AVAX token is hard-capped, unlike ETH which has no hard cap
 - Avalanche uses a custom Proof of Stake consensus protocol, instead of Proof of Work by Ethereum
-- The Avalanche C-Chain memory pool of transactions is not public, and restricted to validators. This can be problematic as block producers have significant upside in making profit off their knowledge of what is going to be included as a transaction next e.g. by doing arbitrage on DEX trades.
+- The Avalanche C-Chain memory pool of transactions is not public, and restricted to validators. This can be problematic as block producers have significant upside in making profit off their knowledge of what is going to be included in a transaction next, e.g. by doing arbitrage on DEX trades.
 - At the time of writing, it costs upwards of $150,000 USD to stake and become a validator in Avalanche's ecosystem
 - Avalanche is less decentralized than Ethereum at the time of writing
 
 ## Solana
 ![](https://i.imgur.com/8D0mVBm.png)
 
-Solana has been talked about a lot recently, and has been making the rounds on news. They have seen some good days and some bad days, but for this section, we will try to go over a little bit of what technology they are running under the hood.
+Solana has been talked about a lot recently, and has been making the rounds on news. They have seen some good days and some bad days, but for this section, we will try to go over a bit of what technology they are running under the hood.
 
 Solana is a Proof of Stake blockchain with some additional technology. The most important part of this additional technology is something they call **Proof of History**. 
 
 #### Proof of History
 
-Essentially, Solana's hypothesis was that one of the biggest technical challenges in designing blockchains was the lack of a shared clock. It is hard to get a distributed system of nodes to agree on the order of things due to the lack of a shared clock. Blockchains like Ethereum and Bitcoin use block numbers (or block heights) to provide an ordering to transactions, but this has the downside that a transaction doens't finish execution until the block time has passed (~10 minutes on Bitcoin, ~15 seconds on Ethereum).
+Essentially, Solana's hypothesis was that one of the biggest technical challenges in designing blockchains was the lack of a shared clock. It is hard to get a distributed system of nodes to agree on the order of things due to the lack of a shared clock. Blockchains like Ethereum and Bitcoin use block numbers (or block heights) to provide an ordering to transactions, but this has the downside that a transaction doesn't finish execution until the block time has passed (~10 minutes on Bitcoin, ~15 seconds on Ethereum).
 
 Solana takes a drastically different approach with Proof of History. Instead of having blocks and a block time, it requires validators to sign cryptographic proofs which can prove that *some* time has passed since the last proof they provided. This is done by hashing the output of a previous hash. All data that was hashed into the proof must have existed before the proof was created. The validators then share this with all the other nodes, which can reproduce the new hash, and verify the cryptographic proof fast enough.
 
 Most of the other optimizations are just that, optimizations to smaller aspects of the blockchain to make it work faster. 
 
 #### Leader Selection
-Solana has deterministic leader selection. This means that when a transaction is created, the network already knows who the next block creator is going to be, and can just forward the transaction data to that leader directly. Unlike Bitcoin and Ethereum, there is no 'race' or 'puzzle' to solve in competition against other miners. This has it's downsides too, as determinsitic leader selection implies that since leaders are known ahead of time they can be subject to DDoS attacks. 
+Solana has deterministic leader selection. This means that when a transaction is created, the network already knows who the next block creator is going to be, and can just forward the transaction data to that leader directly. Unlike Bitcoin and Ethereum, there is no 'race' or 'puzzle' to solve in competition against other miners. This has it's downsides too, as deterministic leader selection implies that since leaders are known ahead of time they can be subject to DDoS attacks. 
 
 <Quiz questionId="b665a8e7-ed53-4e80-aa3a-6652de11e87e" />
 
@@ -225,7 +225,7 @@ Solana is really fast. Period. But what does it compromise on to achieve this sp
 
 Most of the complexity Solana requires to enable fast transactions is handed down to dApp developers to deal with. If you've ever looked at Solana's documentation about how to write programs in Rust, it looks much more intimidating than looking at Solidity. The system is much more complicated and difficult to deal with, and a lot needs to be done by the end developers.
 
-The tradeoff may be fine. The chain is really fast, but also really hard to build complicated applications on. Over time, the community will likely create abstractions and hide much of the complexity, but if you want to understand the fundamentals so you can solve weird issues when they come up, then you need to know that it is not going to be easy. The complexity is also likely the reason Solana doesn't see as much scams, not because code on Solana doesn't have vulnerabilities, but because very few devs in the world can write Solana programs let alone reverse engineer and find vulnerabilities in them.
+The tradeoff may be fine. The chain is really fast, but also really hard to build complicated applications on. Over time, the community will likely create abstractions and hide much of the complexity, but if you want to understand the fundamentals so you can solve weird issues when they come up, then you need to know that it is not going to be easy. The complexity is also likely the reason Solana doesn't see as many scams, not because code on Solana doesn't have vulnerabilities, but because very few devs in the world can write Solana programs let alone reverse engineer and find vulnerabilities in them.
 
 #### Stateless Blockchain
 The other biggest difference between Solana and Ethereum is that Solana smart contracts are stateless, whereas Ethereum smart contracts are stateful. By this point, you have gotten used to storing variables, arrays, mappings, etc. in Solidity code. Solana does not allow that. Contracts in Solana cannot store anything by themselves.
